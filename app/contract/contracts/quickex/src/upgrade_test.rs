@@ -23,6 +23,8 @@
 //! cargo test upgrade_safety_gate_ -- --nocapture
 //! ```
 
+
+
 use crate::{
     errors:: RustAcademyError,
     storage::{CURRENT_CONTRACT_VERSION, LEGACY_CONTRACT_VERSION, PRIVACY_ENABLED_KEY},
@@ -650,6 +652,7 @@ fn upgrade_harness_all_lifecycle_statuses_are_distinct_post_migration() {
 /// Required because admin-gated functions (set_upgrade_window, start_upgrade,
 /// complete_upgrade) use require_admin which checks the role; the role is not
 /// automatically accessible after a WASM upgrade until migrate seeds it.
+
 fn seed_admin_role<'a>(
     env: &'a Env,
     contract_id: &Address,
