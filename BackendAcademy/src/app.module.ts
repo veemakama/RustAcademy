@@ -9,6 +9,7 @@ import { RewardsModule } from './rewards/rewards.module';
 import { SecurityModule } from './security/security.module';
 import { SubmissionModule } from './submissions/submission.module';
 import { TutorProfileModule } from './users/tutor-profile.module';
+import { ContractsModule } from './contracts/contracts.module';
 import { UserProfileModule } from './users/user-profile.module';
 import { AiModule } from './ai/ai.module';
 import { ContractsModule } from './contracts/contracts.module';
@@ -19,6 +20,7 @@ import { SocialModule } from './social/social.module';
 import { OnboardingModule } from './onboarding/onboarding.module';
 import { LessonModule } from './lessons/lesson.module';
 import { TaskModule } from './tasks/task.module';
+import { LoggingModule } from './logging/logging.module';
 import { ProgressModule } from './courses/progress/progress.module';
 import { AppConfigModule } from './config/config.module';
 import { ContractsModule } from './contracts/contracts.module';
@@ -54,6 +56,7 @@ import { SessionsModule } from './sessions/sessions.module';
     OnboardingModule,
     LessonModule,
     TaskModule,
+    LoggingModule,
     PathfindingModule,
     MonitoringModule,
     ProgressModule,

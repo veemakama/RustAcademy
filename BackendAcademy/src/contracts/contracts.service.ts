@@ -85,6 +85,8 @@ export class ContractsService {
       deployedAt: deployment.deployedAt,
       methods: ['transfer', 'balance', 'approve', 'burn', 'mint', 'allowance'],
     };
+    this.proposals.set(proposal.id, proposal);
+    return { success: true, message: 'Proposal created', data: proposal };
   }
 
   async getContractHealth(contractId: string): Promise<ContractHealth> {
@@ -211,5 +213,24 @@ export class ContractsService {
     }
     this.invocationHistory.get(contractId)!.push(result);
     this.invocationCounts.set(contractId, (this.invocationCounts.get(contractId) ?? 0) + 1);
+  getProposal(id: string) {
+    const proposal = this.proposals.get(id);
+    if (!proposal) throw new NotFoundException('Proposal not found');
+    return proposal;
+  }
+
+  listProposals() {
+    return Array.from(this.proposals.values());
+  }
+
+  castVote(proposalId: string, userId: string, vote: 'yes' | 'no') {
+    const proposal = this.proposals.get(proposalId);
+    if (!proposal) throw new NotFoundException('Proposal not found');
+    if (proposal.status !== 'active') {
+      return { success: false, message: 'Proposal is no longer active' };
+    }
+    if (vote === 'yes') proposal.yesVotes++;
+    else proposal.noVotes++;
+    return { success: true, message: `Vote cast as ${vote}`, data: proposal };
   }
 }
