@@ -3,15 +3,19 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
 import { ChallengesModule } from './challenges/challenges.module';
 import { RewardsModule } from './rewards/rewards.module';
 import { SecurityModule } from './security/security.module';
 import { SubmissionModule } from './submissions/submission.module';
 import { TutorProfileModule } from './users/tutor-profile.module';
+import { ContractsModule } from './contracts/contracts.module';
 import { UserProfileModule } from './users/user-profile.module';
 import { AiModule } from './ai/ai.module';
+import { ContractsModule } from './contracts/contracts.module';
 import { LeaderboardModule } from './leaderboard/leaderboard.module';
 import { AnalyticsModule } from './analytics/analytics.module';
+import { WalletModule } from './wallet/wallet.module';
 import { SocialModule } from './social/social.module';
 import { OnboardingModule } from './onboarding/onboarding.module';
 import { LessonModule } from './lessons/lesson.module';
@@ -26,6 +30,9 @@ import { SessionsModule } from './sessions/sessions.module';
         ttl: 60_000,
       },
     ]),
+    AppConfigModule,
+    AuthModule,
+    ContractsModule,
     UserProfileModule,
     TutorProfileModule,
     SubmissionModule,
@@ -33,12 +40,22 @@ import { SessionsModule } from './sessions/sessions.module';
     SecurityModule,
     ChallengesModule,
     AiModule,
+    ContractsModule,
     LeaderboardModule,
     AnalyticsModule,
+    WalletModule,
     SocialModule,
     OnboardingModule,
     LessonModule,
     TaskModule,
+    AssetsModule,
+    JobsModule,
+    LoggingModule,
+    PathfindingModule,
+    MonitoringModule,
+    ProgressModule,
+    SearchModule,
+    PaymentsModule,
     SessionsModule,
   ],
   controllers: [AppController],
